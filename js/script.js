@@ -1,17 +1,21 @@
 "use strict";
 
 let world;
-let semiCircleWhite;
-let semiCircleBlack;
+// let semiCircleWhite10;
+// let semiCircleBlack;
 
 const IMG = [];
 let myFont;
 
 function preload() {
-  semiCircleBlack = loadImage("assets/images/semi-circle-black-10.png");
-  semiCircleWhite = loadImage("assets/images/semi-circle-white-10.png");
-  IMG.push(semiCircleBlack);
-  IMG.push(semiCircleWhite);
+  const semiCircleBlack10 = loadImage("assets/images/semi-circle-black-10.png");
+  const semiCircleWhite10 = loadImage("assets/images/semi-circle-white-10.png");
+  const semiCircleBlack12 = loadImage("assets/images/semi-circle-black-12.png");
+  const semiCircleWhite12 = loadImage("assets/images/semi-circle-white-12.png");
+  IMG.push(semiCircleBlack10);
+  IMG.push(semiCircleWhite10);
+  IMG.push(semiCircleBlack12);
+  IMG.push(semiCircleWhite12);
 
   myFont = loadFont("assets/Press_Start_2P/PressStart2P-Regular.ttf");
 }
@@ -31,6 +35,7 @@ function draw() {
 }
 
 function mousePressed() {
+  console.log("mousePressed");
   world.keyPressed();
 }
 

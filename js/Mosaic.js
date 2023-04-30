@@ -1,6 +1,6 @@
 class Mosaic {
-  constructor(param1Int, param2Int) {
-    this.blockSize = 10;
+  constructor(param1Int, param2Int, param3Int, param4Bool) {
+    this.blockSize = param3Int;
     this.countWidth = 23;
     this.countHeight = 33;
 
@@ -11,6 +11,7 @@ class Mosaic {
     this.numbers = ["black", "white"];
     this.colors = [];
 
+    this.frame = param4Bool;
     this.frameWidth = 12;
 
     this.x = param1Int;
@@ -18,7 +19,7 @@ class Mosaic {
   }
 
   display() {
-    this.drawFrame();
+    this.frame && this.drawFrame();
     this.drawRandomMosaic();
   }
 
@@ -64,7 +65,10 @@ class Mosaic {
     const randomNumber = random();
     rotate(radians(90 * Math.round(random(1, 5))));
 
-    const semiCircle = this.selectSemiCircle(this.clrs[this.queueNum[1]]);
+    const semiCircle = this.selectSemiCircle(
+      this.clrs[this.queueNum[1]],
+      this.blockSize
+    );
     fill(this.clrs[this.queueNum[1]]);
 
     // arc(
@@ -99,11 +103,13 @@ class Mosaic {
     }
   }
 
-  selectSemiCircle(clrs) {
+  selectSemiCircle(clrs, blockSize) {
     if (clrs === "#000000") {
-      return IMG[0];
+      if (blockSize === 10) return IMG[0];
+      else if (blockSize === 12) return IMG[2];
     } else if (clrs === "#FFFFFF") {
-      return IMG[1];
+      if (blockSize === 10) return IMG[1];
+      else if (blockSize === 12) return IMG[3];
     }
   }
 

@@ -1,4 +1,4 @@
-class Floor {
+class Room {
   constructor() {}
 
   display() {

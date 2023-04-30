@@ -17,10 +17,10 @@ class World {
 
     this.TERRAIN_BASE_Y = (2 * height) / 3;
     this.GROUND_COLOR = color(150, 150, 160);
-    this.floor = new Floor();
-    this.mosaic = new Mosaic(width / 2, 35);
+    this.room = new Room();
+    this.mosaic = new Mosaic(width / 2, 35, 10, true);
 
-    this.detailMosaic = new Mosaic(width / 2, 0);
+    this.detailMosaic = new Mosaic(width / 2, 0 + 8, 12, false);
   }
 
   /**
@@ -28,25 +28,28 @@ class World {
   */
   tick() {
     if (this.startGame) {
-      //   this.introduction.display();
-      // } else if (this.playGame) {
-      this.display();
-    } else if (this.detail) {
-      console.log("detail");
+      this.introduction.display();
+    } else if (this.playGame) {
+      this.room.display();
       this.mosaic.display();
+      //  this.display();
+    } else if (this.detail) {
+      noLoop();
+      background(0, 0, 0);
+      this.detailMosaic.display();
     } else if (this.endGame) {
     } else if (this.creditsDisplay) {
     }
   }
 
-  display() {
-    // wall
-    background(255, 250, 240);
+  // display() {
+  //   // wall
+  //   // background(255, 250, 240);
 
-    // floor
-    this.floor.display();
-    this.mosaic.display();
-  }
+  //   // floor
+  //   // this.room.display();
+  //   this.detailMosaic.display();
+  // }
 
   keyPressed() {
     if (this.startGame) {
@@ -55,6 +58,7 @@ class World {
     } else if (this.playGame) {
       this.playGame = false;
       this.detail = true;
+    } else if (this.detail) {
     }
   }
 }
