@@ -12,7 +12,7 @@ class Mosaic {
     this.colors = [];
 
     this.frame = param4Bool;
-    this.frameWidth = 12;
+    this.frameWidth = 8;
 
     this.x = param1Int;
     this.y = param2Int;
@@ -107,9 +107,11 @@ class Mosaic {
     if (clrs === "#000000") {
       if (blockSize === 10) return IMG[0];
       else if (blockSize === 12) return IMG[2];
+      else if (blockSize === 8) return IMG[4];
     } else if (clrs === "#FFFFFF") {
       if (blockSize === 10) return IMG[1];
       else if (blockSize === 12) return IMG[3];
+      else if (blockSize === 8) return IMG[5];
     }
   }
 

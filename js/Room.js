@@ -8,7 +8,7 @@ class Room {
 
   drawFloor() {
     fill(150);
-    rect(width / 2, height - 35, width + 4, 70);
+    rect(width / 2, height - 45, width + 4, 90);
   }
 
   drawCeiling() {

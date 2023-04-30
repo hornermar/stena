@@ -18,7 +18,7 @@ class World {
     this.TERRAIN_BASE_Y = (2 * height) / 3;
     this.GROUND_COLOR = color(150, 150, 160);
     this.room = new Room();
-    this.mosaic = new Mosaic(width / 2, 35, 10, true);
+    this.mosaic = new Mosaic(width / 2, 66, 8, true);
 
     this.detailMosaic = new Mosaic(width / 2, 0 + 8, 12, false);
   }
@@ -30,13 +30,14 @@ class World {
     if (this.startGame) {
       this.introduction.display();
     } else if (this.playGame) {
+      noLoop();
       this.room.display();
       this.mosaic.display();
       //  this.display();
     } else if (this.detail) {
-      noLoop();
       background(0, 0, 0);
       this.detailMosaic.display();
+      noLoop();
     } else if (this.endGame) {
     } else if (this.creditsDisplay) {
     }
@@ -52,13 +53,17 @@ class World {
   // }
 
   keyPressed() {
-    if (this.startGame) {
+    console.log("keyPressed");
+    if (this.startGame && frameCount > 30) {
       this.startGame = false;
       this.playGame = true;
     } else if (this.playGame) {
       this.playGame = false;
       this.detail = true;
+      loop();
+      frameRate(30);
     } else if (this.detail) {
+      this.detailMosaic.display();
     }
   }
 }
