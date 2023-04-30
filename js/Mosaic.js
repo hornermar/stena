@@ -1,8 +1,8 @@
 class Mosaic {
-  constructor() {
-    this.blockSize = 20;
-    this.countWidth = 16;
-    this.countHeight = 20;
+  constructor(param1Int, param2Int) {
+    this.blockSize = 10;
+    this.countWidth = 23;
+    this.countHeight = 33;
 
     this.mosaicWidth = this.blockSize * this.countWidth;
     this.mosaicHeight = this.blockSize * this.countHeight;
@@ -12,6 +12,9 @@ class Mosaic {
     this.colors = [];
 
     this.frameWidth = 12;
+
+    this.x = param1Int;
+    this.y = param2Int;
   }
 
   display() {
@@ -24,7 +27,7 @@ class Mosaic {
     fill(192, 192, 192);
     rect(
       400,
-      255,
+      194,
       this.mosaicWidth + this.frameWidth,
       this.mosaicHeight + this.frameWidth
     );
@@ -32,20 +35,25 @@ class Mosaic {
   }
 
   drawRandomMosaic() {
-    for (let y = 65; y < 65 + this.mosaicHeight; y += this.blockSize) {
+    for (
+      let iy = this.y;
+      iy < this.y + this.mosaicHeight;
+      iy += this.blockSize
+    ) {
       for (
-        let x = width / 2 - this.mosaicWidth / 2 + this.blockSize / 2;
-        x < width / 2 + this.mosaicWidth / 2 + this.blockSize / 2;
-        x += this.blockSize
+        let ix = width / 2 - this.mosaicWidth / 2 + this.blockSize / 2;
+        ix < width / 2 + this.mosaicWidth / 2 + this.blockSize / 2;
+        ix += this.blockSize
       ) {
         this.queueNum = this.shuffleArray([0, 1]);
 
+        strokeWeight(1);
         fill(this.clrs[this.queueNum[0]]);
-        rect(x, y, this.blockSize, this.blockSize);
+        rect(ix, iy, this.blockSize, this.blockSize);
 
         push();
 
-        translate(x, y);
+        translate(ix, iy);
         this.semiDual(0, 0, this.clrs);
         pop();
       }
@@ -84,7 +92,7 @@ class Mosaic {
       // second option
     } else {
       // third option//
-      //  arc(x, y, this.blockSize, this.blockSize, radians(270), radians(450));
+      arc(x, y, this.blockSize, this.blockSize, radians(270), radians(450));
 
       rotate(radians(180));
       image(semiCircle, x - this.blockSize / 2, y - this.blockSize / 2);

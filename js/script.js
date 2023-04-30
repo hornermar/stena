@@ -8,8 +8,8 @@ const IMG = [];
 let myFont;
 
 function preload() {
-  semiCircleBlack = loadImage("assets/images/semi-circle-blackS.png");
-  semiCircleWhite = loadImage("assets/images/semi-circle-whiteS.png");
+  semiCircleBlack = loadImage("assets/images/semi-circle-black-10.png");
+  semiCircleWhite = loadImage("assets/images/semi-circle-white-10.png");
   IMG.push(semiCircleBlack);
   IMG.push(semiCircleWhite);
 
@@ -18,8 +18,8 @@ function preload() {
 
 function setup() {
   rectMode(CENTER);
-  createCanvas(800, 500);
-  frameRate(4);
+  createCanvas(800, 400);
+  frameRate(1);
   world = new World();
   background(0);
   strokeWeight(2);
@@ -28,6 +28,10 @@ function setup() {
 
 function draw() {
   world.tick();
+}
+
+function mousePressed() {
+  world.keyPressed();
 }
 
 function keyPressed() {

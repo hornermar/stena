@@ -3,7 +3,7 @@ class Introduction {
     this.s = param1String1;
     this.x = param1Int1;
     this.y = param1Int2;
-    this.introductionTtextFill = color(0, 255, 255);
+    this.introductionTtextFill = color(0, 0, 255);
 
     // this.f = loadFont("Helvetica-14.vlw");
   }
@@ -17,6 +17,6 @@ class Introduction {
     text("STĚNA", 100, 200);
 
     textSize(16);
-    text(`CLICK / TOUCH TO BEGIN`, width / 2, 450);
+    text(`CLICK / TOUCH TO BEGIN`, width / 2, height - 50);
   }
 }
