@@ -14,12 +14,16 @@ function preload() {
   const semiCircleWhite10 = loadImage("assets/images/semi-circle-white-10.png");
   const semiCircleBlack12 = loadImage("assets/images/semi-circle-black-12.png");
   const semiCircleWhite12 = loadImage("assets/images/semi-circle-white-12.png");
+  const semiCircleBlack20 = loadImage("assets/images/semi-circle-black-20.png");
+  const semiCircleWhite20 = loadImage("assets/images/semi-circle-white-20.png");
   IMG.push(semiCircleBlack10);
   IMG.push(semiCircleWhite10);
   IMG.push(semiCircleBlack12);
   IMG.push(semiCircleWhite12);
   IMG.push(semiCircleBlack8);
   IMG.push(semiCircleWhite8);
+  IMG.push(semiCircleBlack20);
+  IMG.push(semiCircleWhite20);
 
   myFont = loadFont("assets/Press_Start_2P/PressStart2P-Regular.ttf");
 }
