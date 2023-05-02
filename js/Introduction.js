@@ -10,7 +10,6 @@ class Introduction {
 
   display() {
     background(color(223, 230, 232));
-    textFont(myFont);
     textSize(32);
     fill(this.introductionTtextFill);
 

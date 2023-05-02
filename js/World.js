@@ -29,9 +29,9 @@ class World {
     if (this.startGame) {
       this.introduction.display();
     } else if (this.playGame) {
-      noLoop();
       this.room.display();
       this.mosaic.display();
+      if (frameCount > 60) noLoop();
     } else if (this.detail) {
       this.detailMosaic.display();
       noLoop();
@@ -49,7 +49,7 @@ class World {
       this.playGame = false;
       this.detail = true;
       loop();
-      frameRate(30);
+      frameRate(10);
     } else if (this.detail) {
       this.detailMosaic.display();
     }
