@@ -27,7 +27,7 @@ function preload() {
 function setup() {
   rectMode(CENTER);
   textFont(myFont);
-  createCanvas(800, 385);
+  createCanvas(800, 400);
   frameRate(30);
   world = new World();
   background(0);

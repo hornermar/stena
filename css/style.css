@@ -21,12 +21,26 @@ body {
 } */
 
 canvas {
-  display: block;
-  margin: 0;
-  position: absolute;
+  aspect-ratio: 800 / 400 !important;
+  image-rendering: pixelated;
+  /* margin: 0; */
+  /* position: absolute;
   top: 25%;
   left: 50%;
-  transform: translate(-50%, -25%);
+  transform: translate(-50%, -25%); */
+
   width: 100% !important;
-  height: auto !important;
+}
+
+@media (min-width: 701px) {
+  canvas {
+    height: auto !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  canvas {
+    max-height: -webkit-fill-available !important;
+    height: unset !important;
+  }
 }
