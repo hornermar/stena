@@ -21,7 +21,6 @@ class Mosaic {
 
   display() {
     this.isFrame && this.drawFrame();
-
     this.isCalculator && background(color(223, 230, 232));
     this.drawMosaic();
     this.isCalculator && this.drawCalculator(20);

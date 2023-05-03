@@ -20,6 +20,8 @@ class World {
     this.room = new Room();
     this.mosaic = new Mosaic(width / 2, 66, 8, true, false);
     this.detailMosaic = new Mosaic(width / 2, 0 + 8, 12, false, true);
+
+    this.startButton = new Button("start", 100, 150);
   }
 
   /**
@@ -27,13 +29,16 @@ class World {
   */
   tick() {
     if (this.startGame) {
+      background(color(223, 230, 232));
       this.introduction.display();
     } else if (this.playGame) {
+      background(color(223, 230, 232));
       this.room.display();
       this.mosaic.display();
-      if (frameCount > 60) noLoop();
+      this.startButton.display();
+      noLoop();
     } else if (this.detail) {
-      this.detailMosaic.display();
+      // this.detailMosaic.display();
       noLoop();
     } else if (this.endGame) {
     } else if (this.creditsDisplay) {
@@ -42,14 +47,26 @@ class World {
 
   keyPressed() {
     console.log("keyPressed");
-    if (this.startGame && frameCount > 30) {
+    if (
+      this.startGame &&
+      frameCount > 30 &&
+      height - 50 &&
+      mouseY > 200 &&
+      mouseX > width / 2
+    ) {
       this.startGame = false;
       this.playGame = true;
     } else if (this.playGame) {
-      this.playGame = false;
-      this.detail = true;
-      loop();
-      frameRate(10);
+      console.log(keyCode);
+      if (
+        (mouseY > 180 && mouseY < 200 && mouseX > 100 && mouseX < 210) ||
+        keyCode === 83
+      ) {
+        this.playGame = false;
+        this.detail = true;
+        loop();
+        frameRate(10);
+      }
     } else if (this.detail) {
       this.detailMosaic.display();
     }

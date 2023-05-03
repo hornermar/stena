@@ -9,7 +9,7 @@ class Introduction {
   }
 
   display() {
-    background(color(223, 230, 232));
+    // background(color(223, 230, 232));
     textSize(32);
     fill(this.introductionTtextFill);
 

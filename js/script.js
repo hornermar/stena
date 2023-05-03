@@ -27,7 +27,7 @@ function preload() {
 function setup() {
   rectMode(CENTER);
   textFont(myFont);
-  createCanvas(800, 400);
+  createCanvas(800, 385);
   frameRate(30);
   world = new World();
   background(0);
@@ -39,10 +39,10 @@ function draw() {
   world.tick();
 }
 
-function mousePressed() {
+function keyPressed() {
   world.keyPressed();
 }
 
-function keyPressed() {
+function mouseClicked() {
   world.keyPressed();
 }
