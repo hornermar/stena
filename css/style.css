@@ -15,7 +15,18 @@ body {
   background-color: black;
 }
 
+/* canvas {
+  width: 100% !important;
+  height: auto !important;
+} */
+
 canvas {
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -25%);
   width: 100% !important;
   height: auto !important;
 }
