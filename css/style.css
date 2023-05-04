@@ -8,6 +8,9 @@ using the CSS Grid.
 Also hides overflow.
 
 **********************************************/
+:root {
+  --app-height: 100%;
+}
 
 body {
   height: 100vh;
@@ -19,8 +22,8 @@ body {
 canvas {
   aspect-ratio: auto 800 / 400 !important;
   height: auto !important;
-  max-height: 100vh !important;
-  width: auto !important;
+  max-height: calc(100vh - calc(100vh - 100%));
+  width: 100% !important;
 
   overflow-clip-margin: content-box !important;
   overflow: clip;
