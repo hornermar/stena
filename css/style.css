@@ -10,14 +10,18 @@ Also hides overflow.
 **********************************************/
 
 body {
+  height: 100vh;
   padding: 0;
   margin: 0;
   background-color: black;
 }
 
 canvas {
+  aspect-ratio: auto 800 / 400 !important;
   height: auto !important;
+  max-height: 100vh !important;
   width: auto !important;
-  max-width: 100vw !important;
-  max-height: -webkit-fill-available !important;
+
+  overflow-clip-margin: content-box !important;
+  overflow: clip;
 }
