@@ -11,6 +11,6 @@ class Button {
     textSize(16);
     fill(this.textFill);
 
-    text(`(S)TART`, 100, 200);
+    text(`START`, 100, 200);
   }
 }
