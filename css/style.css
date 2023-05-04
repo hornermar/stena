@@ -30,7 +30,7 @@ canvas {
 }
 
 .small {
+  border: 3px solid pink;
   width: auto !important;
-  max-height: -webkit-fill-available !important;
-  height: 100% !important;
+  height: 100vh !important;
 }
