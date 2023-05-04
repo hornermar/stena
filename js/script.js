@@ -1,5 +1,6 @@
 "use strict";
 
+let canvas;
 let world;
 // let semiCircleWhite10;
 // let semiCircleBlack;
@@ -27,7 +28,13 @@ function preload() {
 function setup() {
   rectMode(CENTER);
   textFont(myFont);
-  createCanvas(800, 400);
+
+  canvas = createCanvas(800, 400);
+  if (window.innerWidth / window.innerHeight > 2) {
+    console.log("small");
+    canvas.addClass("small");
+  }
+  //  createCanvas(windowWidth, windowHeight);
   frameRate(30);
   world = new World();
   background(0);
@@ -46,3 +53,13 @@ function keyPressed() {
 function mouseClicked() {
   world.keyPressed();
 }
+
+// function windowResized() {
+//   if (window.innerWidth / window.innerHeight > 2) {
+//     console.log("small");
+//     canvas.addClass("small");
+//   } else {
+//     console.log("big");
+//     canvas.removeClass("small");
+//   }
+// }

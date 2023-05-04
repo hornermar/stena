@@ -28,3 +28,8 @@ canvas {
   width: auto !important;
   width: 100% !important;
 }
+
+.small {
+  width: auto !important;
+  height: 100% !important;
+}
