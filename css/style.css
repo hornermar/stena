@@ -20,8 +20,8 @@ body {
 
 canvas {
   image-rendering: pixelated;
-  margin: auto;
   display: block;
+  position: absolute;
   height: auto !important;
   width: 100% !important;
 }
