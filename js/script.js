@@ -2,8 +2,6 @@
 
 let canvas;
 let world;
-// let semiCircleWhite10;
-// let semiCircleBlack;
 
 const IMG = {};
 let myFont;
@@ -30,11 +28,7 @@ function setup() {
   textFont(myFont);
 
   canvas = createCanvas(800, 400);
-  if (window.innerWidth / window.innerHeight > 2) {
-    console.log("small");
-    canvas.addClass("small");
-  }
-  //  createCanvas(windowWidth, windowHeight);
+  windowResized();
   frameRate(30);
   world = new World();
   background(0);
@@ -54,12 +48,10 @@ function mouseClicked() {
   world.keyPressed();
 }
 
-// function windowResized() {
-//   if (window.innerWidth / window.innerHeight > 2) {
-//     console.log("small");
-//     canvas.addClass("small");
-//   } else {
-//     console.log("big");
-//     canvas.removeClass("small");
-//   }
-// }
+function windowResized() {
+  if (window.innerWidth / window.innerHeight > 2) {
+    canvas.addClass("small");
+  } else {
+    canvas.removeClass("small");
+  }
+}
