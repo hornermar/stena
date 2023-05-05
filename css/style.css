@@ -20,10 +20,11 @@ body {
 
 canvas {
   image-rendering: pixelated;
-  margin: 0;
-  display: block;
-  position: absolute;
   height: auto !important;
+  display: block;
+  margin: 0;
+  position: absolute;
+  width: auto !important;
   width: 100% !important;
 }
 

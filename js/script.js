@@ -28,7 +28,7 @@ function setup() {
   textFont(myFont);
 
   canvas = createCanvas(800, 400);
-  windowResized();
+  addCanvasClass();
   //  frameRate(30);
   world = new World();
   background(0);
@@ -49,6 +49,10 @@ function mouseClicked() {
 }
 
 function windowResized() {
+  addCanvasClass();
+}
+
+function addCanvasClass() {
   if (window.innerWidth / window.innerHeight > 2) {
     canvas.addClass("small");
   } else {
