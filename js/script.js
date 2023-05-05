@@ -29,7 +29,7 @@ function setup() {
 
   canvas = createCanvas(800, 400);
   windowResized();
-  frameRate(30);
+  //  frameRate(30);
   world = new World();
   background(0);
   strokeWeight(2);
