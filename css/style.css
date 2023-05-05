@@ -20,6 +20,7 @@ body {
 
 canvas {
   image-rendering: pixelated;
+  margin: 0;
   display: block;
   position: absolute;
   height: auto !important;
