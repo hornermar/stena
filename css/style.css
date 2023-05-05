@@ -21,7 +21,6 @@ body {
 canvas {
   image-rendering: pixelated;
   height: auto !important;
-
   display: block;
   margin: 0;
   position: absolute;
@@ -30,7 +29,6 @@ canvas {
 }
 
 .small {
-  border: 3px solid pink;
   width: auto !important;
   height: 100vh !important;
   max-height: -webkit-fill-available;
