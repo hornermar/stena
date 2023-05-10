@@ -63,6 +63,8 @@ class Mosaic {
     this.isCalculator && background(223, 230, 232);
     this.drawMosaic();
     this.isCalculator && this.drawCalculator(20);
+
+    console.log("selected", this.selected);
   }
 
   drawMosaic() {
@@ -73,6 +75,8 @@ class Mosaic {
       blackSemiCircle: 0,
       whiteSemiCircle: 0,
     };
+
+    this.mode === "random" && (this.selected = []);
 
     for (let iy = 0; iy < this.countHeight; iy++) {
       for (let ix = 0; ix < this.countWidth; ix++) {
@@ -87,9 +91,11 @@ class Mosaic {
         );
 
         if (this.mode === "original") {
-          this.drawOriginalPiece(this.original[iy][ix]);
+          this.drawPieceFromGrid(this.original[iy][ix]);
         } else if (this.mode === "random") {
           this.drawRandomPiece();
+        } else if (this.mode === "selected") {
+          this.drawPieceFromGrid(this.selected[iy][ix]);
         }
         pop();
       }
@@ -115,9 +121,12 @@ class Mosaic {
   }
 
   drawRandomPiece() {
-    rotate(radians(90 * Math.round(random(1, 5))));
+    const rotation = Math.round(random(0, 3));
+    rotate(radians(90 * rotation));
+
     const queueNum = this.shuffleArray([0, 1]);
     fill(this.colors[queueNum[0]]);
+
     const randomNumber = random();
     const semiCircle = this.selectSemiCircle(
       this.colors[queueNum[1]],
@@ -129,20 +138,26 @@ class Mosaic {
       this.drawOne(semiCircle, this.blockSize);
       this.types.one++;
       this.types[`${this.colors[queueNum[1]]}SemiCircle`]++;
+
+      this.selected.push([1, rotation, queueNum[1]]);
     } else if (randomNumber < (1 / 3) * 2) {
       // second option
       this.drawTwoSame(semiCircle, this.blockSize);
       this.types.twoSame++;
       this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
+
+      this.selected.push([2, rotation, queueNum[1]]);
     } else {
       // third option
       this.drawTwoMirrored(semiCircle, this.blockSize);
       this.types.twoMirrored++;
       this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
+
+      this.selected.push([2, rotation, queueNum[1]]);
     }
   }
 
-  drawOriginalPiece(piece) {
+  drawPieceFromGrid(piece) {
     rotate(radians(90 * piece[1]));
     fill(this.colors[piece[2]]);
     const backgroundColor = piece[2] === 0 ? 1 : 0;
