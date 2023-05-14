@@ -8,8 +8,25 @@ class World {
     this.GROUND_COLOR = color(150, 150, 160);
 
     this.room = new Room();
-    this.originalMosaic = new Mosaic(width / 2, 66, 8, true, false, "random");
-    this.detailMosaic = new Mosaic(width / 2, 0 + 8, 12, false, true, "random");
+
+    this.originalMosaic = new Mosaic(width / 2, 66, 8, true, false, "original");
+    this.originalMosaicDetail = new Mosaic(
+      width / 2,
+      0 + 8,
+      12,
+      false,
+      true,
+      "original"
+    );
+
+    this.randomMosaicDetail = new Mosaic(
+      width / 2,
+      0 + 8,
+      12,
+      false,
+      true,
+      "random"
+    );
 
     this.selectedMosaic = new Mosaic(width / 2, 66, 8, true, false, "selected");
 
@@ -39,7 +56,7 @@ class World {
       this.openDetailButton.display();
     } else if (this.detail) {
       background(223, 230, 232);
-      this.detailMosaic.display();
+      this.originalMosaicDetail.display();
       noLoop();
     } else if (this.endGame) {
     } else if (this.creditsDisplay) {
@@ -58,7 +75,7 @@ class World {
       this.playGame = false;
       this.detail = true;
     } else if (this.detail) {
-      this.detailMosaic.display();
+      this.randomMosaicDetail.display();
     }
   }
 }

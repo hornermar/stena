@@ -1,10 +1,10 @@
 class GameText {
-  constructor(param1String1, param2Int1, param3Int2, param4Int3, param4Bool1) {
-    this.text = param1String1;
-    this.size = param2Int1;
-    this.x = param3Int2;
-    this.y = param4Int3;
-    this.isClickable = param4Bool1;
+  constructor(param1String, param2Int, param3Int, param4Int, param4Bool) {
+    this.text = param1String;
+    this.size = param2Int;
+    this.x = param3Int;
+    this.y = param4Int;
+    this.isClickable = param4Bool;
     this.textFill = color(0, 0, 255);
   }
 
@@ -16,7 +16,6 @@ class GameText {
   }
 
   getClickableArea(mouseX, mouseY) {
-    //  console.log(mouseX, mouseY);
     if (!this.isClickable) return false;
 
     // fill(0, 0, 255);
