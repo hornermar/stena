@@ -27,6 +27,7 @@ class Mosaic {
     this.mode = param6String;
     this.current = [];
 
+    this.selected = [];
     this.original = [
       // 1
       [
@@ -893,7 +894,7 @@ class Mosaic {
 
   display() {
     this.isFramed && this.drawFrame();
-    this.isCalculator && background(223, 230, 232);
+    //this.isCalculator && background(223, 230, 232);
     this.drawMosaic();
     this.isCalculator && this.drawCalculator(20);
 
@@ -910,7 +911,7 @@ class Mosaic {
     };
 
     this.mode === "random" && (this.selected = []);
-    this.colorOfBackground = [];
+    // this.colorOfBackground = [];
 
     for (let iy = 0; iy < this.countHeight; iy++) {
       for (let ix = 0; ix < this.countWidth; ix++) {
@@ -928,6 +929,8 @@ class Mosaic {
           this.drawPieceFromGrid(this.original[iy][ix]);
         } else if (this.mode === "random") {
           this.drawRandomPiece();
+          //    console.log(this.selected);
+          //    this.drawPieceFromGrid(this.selected[iy][ix]);
         } else if (this.mode === "selected") {
           this.drawPieceFromGrid(this.selected[iy][ix]);
         }
@@ -962,19 +965,26 @@ class Mosaic {
 
   drawRandomPiece() {
     const randomNumber = random();
-    // const rotation = Math.round(random(0, 3))
-
-    if (randomNumber < 0.3) {
-    } else if (randomNumber < 0.575) {
-      rotate(radians(90));
-    } else if (randomNumber < 0.85) {
-      rotate(radians(180));
-    } else {
-      rotate(radians(270));
-    }
+    let rotation;
+    let type;
 
     const queueNum = this.shuffleArray([0, 1]);
-    fill(this.colors[queueNum[0]]);
+    const bacgroundColor = queueNum[0];
+
+    if (randomNumber < 0.3) {
+      rotation = 0;
+    } else if (randomNumber < 0.575) {
+      rotation = 1;
+    } else if (randomNumber < 0.85) {
+      rotation = 2;
+    } else {
+      rotation = 3;
+    }
+
+    rotate(radians(90 * rotation));
+
+    color = queueNum[0];
+    fill(this.colors[bacgroundColor]);
 
     const semiCircle = this.selectSemiCircle(
       this.colors[queueNum[1]],
@@ -983,27 +993,28 @@ class Mosaic {
 
     if (randomNumber < 0.67) {
       // first option
+      type = 1;
       this.drawOne(semiCircle, this.blockSize);
       //  this.types.one++;
-      this.types[`${this.colors[queueNum[1]]}SemiCircle`]++;
-
+      //   this.types[`${this.colors[queueNum[1]]}SemiCircle`]++;
       //   this.selected.push([1, rotation, queueNum[1]]);
     } else if (randomNumber < 0.89) {
       // second option
+      type = 2;
       this.drawTwoSame(semiCircle, this.blockSize);
 
       //  this.types.twoSame++;
-      this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
-
+      //  this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
       //  this.selected.push([2, rotation, queueNum[1]]);
     } else {
+      type = 3;
       // third option
       this.drawTwoMirrored(semiCircle, this.blockSize);
       //   this.types.twoMirrored++;
-      this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
-
+      //  this.types[`${this.colors[queueNum[1]]}SemiCircle`] += 2;
       //   this.selected.push([2, rotation, queueNum[1]]);
     }
+    this.selected.push([type, rotation, bacgroundColor]);
   }
 
   drawPieceFromGrid(piece) {

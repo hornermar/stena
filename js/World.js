@@ -31,8 +31,8 @@ class World {
     this.selectedMosaic = new Mosaic(width / 2, 66, 8, true, false, "selected");
 
     this.title = new GameText("STĚNA", 44, 100, 150);
-    this.author = new GameText("Zdeněk Sýkora", 20, 100, 200);
-    this.year = new GameText("1966-1968", 20, 100, 250);
+    this.author = new GameText("ZDENĚK SÝKORA", 16, 105, 190);
+    this.you = new GameText("(AND YOU)", 16, 135, 220);
     this.start = new GameText(
       "CLICK / TOUCH TO START",
       16,
@@ -40,6 +40,8 @@ class World {
       height - 50
     );
     this.openDetailButton = new GameText("open detail", 16, 310, 40, true);
+    this.reloadButton = new GameText("Reload", 16, 100, 140, true);
+    this.selectButton = new GameText("Select", 16, 100, 240, true);
   }
 
   tick() {
@@ -47,7 +49,7 @@ class World {
       background(223, 230, 232);
       this.title.display();
       if (frameCount > 60) this.author.display();
-      if (frameCount > 120) this.year.display();
+      if (frameCount > 120) this.you.display();
       if (frameCount > 180) this.start.display();
     } else if (this.playGame) {
       background(223, 230, 232);
@@ -57,8 +59,11 @@ class World {
     } else if (this.detail) {
       background(223, 230, 232);
       this.originalMosaicDetail.display();
+      this.reloadButton.display();
+      this.selectButton.display();
       noLoop();
     } else if (this.endGame) {
+      this.selectedMosaic.display();
     } else if (this.creditsDisplay) {
     }
   }
@@ -75,7 +80,14 @@ class World {
       this.playGame = false;
       this.detail = true;
     } else if (this.detail) {
-      this.randomMosaicDetail.display();
+      if (this.reloadButton.getClickableArea(mouseX, mouseY)) {
+        this.randomMosaicDetail.display();
+      } else if (this.selectButton.getClickableArea(mouseX, mouseY)) {
+        console.log("selectButton");
+        loop();
+        this.detail = false;
+        this.endGame = true;
+      }
     }
   }
 }
